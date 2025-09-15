@@ -29,7 +29,7 @@ jobs:
           git config --global user.name 'Your Name'
           git config --global user.email 'your-username@users.noreply.github.com'
           echo "GITHUB_REPOSITORY is <$GITHUB_REPOSITORY>"
-          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{GITHUB_REPOSITORY}}.git
           git add report.txt
           git commit -am "Automated report"
           git push origin HEAD:origin 
