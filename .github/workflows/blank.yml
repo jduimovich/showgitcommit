@@ -29,6 +29,8 @@ jobs:
           git config --global user.name 'Your Name'
           git config --global user.email 'your-username@users.noreply.github.com'
           echo "GITHUB_REPOSITORY is <$GITHUB_REPOSITORY>"
+          curl -sS -f -I -H "Authorization: token ${{ secrets.GITHUB_TOKEN }} https://api.github.com | grep ^x-oauth-scopes: | cut -d' ' -f2- | tr -d "[:space:]" | tr ',' '\n'
+
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY.git
           git add report.txt
           git commit -am "Automated report"
